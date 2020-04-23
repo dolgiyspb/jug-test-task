@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PresentationsDataService } from './services/presentations-data.service';
 
 @Component({
   selector: 'app-presentations',
@@ -6,10 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./presentations.component.less']
 })
 export class PresentationsComponent implements OnInit {
+  constructor(private readonly presentationsDataService: PresentationsDataService) {}
 
-  constructor() { }
-
-  ngOnInit() {
+  ngOnInit(): void {
+    this.presentationsDataService.get$().subscribe(v => console.log(v));
   }
 
 }
