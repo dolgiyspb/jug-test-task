@@ -1,0 +1,17 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  border: 1px solid black;
+  width: 250px;
+  height: 250px;
+  padding: calc(var(--grid-step) * 5) calc(var(--grid-step) * 5) calc(var(--grid-step) * 2) calc(var(--grid-step) * 2);
+}
+
+.title, .author {
+  font-weight: bold;
+}
+
+.author, .additional {
+  margin-top: calc(var(--grid-step) * 3);
+}

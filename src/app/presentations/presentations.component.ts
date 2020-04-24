@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PresentationsDataService } from './services/presentations-data.service';
+import { Observable } from 'rxjs';
+import { Presentation } from './interfaces/presentation.interface';
 
 @Component({
   selector: 'app-presentations',
@@ -7,10 +9,12 @@ import { PresentationsDataService } from './services/presentations-data.service'
   styleUrls: ['./presentations.component.less']
 })
 export class PresentationsComponent implements OnInit {
+  public presentations$!: Observable<Presentation[]>;
+
   constructor(private readonly presentationsDataService: PresentationsDataService) {}
 
   ngOnInit(): void {
-    this.presentationsDataService.get$().subscribe(v => console.log(v));
+    this.presentations$ = this.presentationsDataService.get$();
   }
 
 }
