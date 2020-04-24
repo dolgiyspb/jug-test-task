@@ -1,2 +1,10 @@
+<form [formGroup]="filterForm">
+  <app-checkbox-group [labels]="languages" formControlName="language"></app-checkbox-group>
+  <app-checkbox-group [labels]="levels" formControlName="level"></app-checkbox-group>
+  <input type="text" formControlName="search"/>
+  <button (click)="resetFilters()" type="button">
+    reset filters
+  </button>
+</form>
 <app-presentation-list [presentations]="presentations$ | async" class="presentations">
 </app-presentation-list>

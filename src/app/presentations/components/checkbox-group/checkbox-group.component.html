@@ -1,0 +1,5 @@
+<label *ngFor="let label of labels; let i = index">
+  <input type="checkbox" [formControl]="checkboxes.at(i)" (ngModelChange)="checkboxClicked()"/>
+  {{label}}
+</label>
+

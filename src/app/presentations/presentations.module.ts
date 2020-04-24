@@ -5,14 +5,18 @@ import { PresentationsRoutingModule } from './presentations-routing.module';
 import { PresentationsDataService } from './services/presentations-data.service';
 import { PresentationListComponent } from './components/presentation-list/presentation-list.component';
 import { PresentationItemComponent } from './components/presentation-item/presentation-item.component';
+import { CheckboxGroupComponent } from './components/checkbox-group/checkbox-group.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
 @NgModule({
-  declarations: [PresentationsComponent, PresentationListComponent, PresentationItemComponent],
+  declarations: [PresentationsComponent, PresentationListComponent, PresentationItemComponent, CheckboxGroupComponent],
   imports: [
     CommonModule,
     PresentationsRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [
     PresentationsDataService,
