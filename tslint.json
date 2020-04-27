@@ -90,7 +90,8 @@
     "use-pipe-transform-interface": true,
     "newline-per-chained-call": false,
     "template-i18n": false,
-    "no-void-expression": false
+    "no-void-expression": false,
+    "invalid-void": [true, {"allow-generics": ["Subject"]}]
   },
   "rulesDirectory": [
     "codelyzer"

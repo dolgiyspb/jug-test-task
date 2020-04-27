@@ -7,12 +7,12 @@ import { PresentationListComponent } from './components/presentation-list/presen
 import { PresentationItemComponent } from './components/presentation-item/presentation-item.component';
 import { CheckboxGroupComponent } from './components/checkbox-group/checkbox-group.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FilterFormComponent } from './components/filter-form/filter-form.component';
+import { FiltersComponent } from './components/filters/filters.component';
 
 
 
 @NgModule({
-  declarations: [PresentationsComponent, PresentationListComponent, PresentationItemComponent, CheckboxGroupComponent, FilterFormComponent],
+  declarations: [PresentationsComponent, PresentationListComponent, PresentationItemComponent, CheckboxGroupComponent, FiltersComponent],
   imports: [
     CommonModule,
     PresentationsRoutingModule,
