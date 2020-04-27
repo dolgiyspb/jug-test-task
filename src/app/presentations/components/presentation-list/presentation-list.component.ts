@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Presentation } from '../../interfaces/presentation.interface';
 
 @Component({
@@ -6,10 +6,6 @@ import { Presentation } from '../../interfaces/presentation.interface';
   templateUrl: './presentation-list.component.html',
   styleUrls: ['./presentation-list.component.less']
 })
-export class PresentationListComponent implements OnInit {
+export class PresentationListComponent {
   @Input() presentations!: Presentation[];
-
-  ngOnInit() {
-  }
-
 }

@@ -1,8 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { PresentationsDataService } from './services/presentations-data.service';
-import { Observable } from 'rxjs';
+import { combineLatest, Observable } from 'rxjs';
 import { Presentation } from './interfaces/presentation.interface';
 import { FormControl } from '@angular/forms';
+import { Filters } from './interfaces/filters.interface';
+import { map } from 'rxjs/operators';
+
+type FilterFunction = (presentation: Presentation) => boolean;
 
 @Component({
   selector: 'app-presentations',
@@ -16,7 +20,18 @@ export class PresentationsComponent implements OnInit {
   constructor(private readonly presentationsDataService: PresentationsDataService) {}
 
   ngOnInit(): void {
-    this.presentations$ = this.presentationsDataService.get$();
-    this.filtersControl.valueChanges.subscribe(v => console.log(v));
+    this.presentations$ = combineLatest(
+      this.presentationsDataService.get$(),
+      this.filtersControl.valueChanges,
+    ).pipe(
+      map(([presentations, filters]: [Presentation[], Filters]) => presentations.filter(this.createFilterFunction(filters))),
+    );
+  }
+
+  private createFilterFunction({level, language, search}: Filters): FilterFunction {
+    return (presentation) =>
+      (!level.length || level.includes(presentation.level))
+      && (!language.length || language.includes(presentation.language))
+      && (!search.length || (presentation.title + presentation.author).toUpperCase().includes(search.toUpperCase()));
   }
 }
