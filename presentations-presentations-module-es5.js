@@ -12317,6 +12317,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       PresentationLevel["INTERMEDIATE"] = "INTERMEDIATE";
       PresentationLevel["HARDCORE"] = "HARDCORE";
       PresentationLevel["ACADEMIC"] = "ACADEMIC";
+      PresentationLevel["HOT"] = "HOT";
     })(PresentationLevel || (PresentationLevel = {}));
     /***/
 

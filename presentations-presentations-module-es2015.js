@@ -8532,6 +8532,7 @@ var PresentationLevel;
     PresentationLevel["INTERMEDIATE"] = "INTERMEDIATE";
     PresentationLevel["HARDCORE"] = "HARDCORE";
     PresentationLevel["ACADEMIC"] = "ACADEMIC";
+    PresentationLevel["HOT"] = "HOT";
 })(PresentationLevel || (PresentationLevel = {}));
 
 
