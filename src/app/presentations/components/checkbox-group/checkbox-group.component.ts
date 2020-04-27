@@ -31,12 +31,14 @@ export class CheckboxGroupComponent implements OnChanges, ControlValueAccessor {
   }
 
   public set value(value: string[]) {
+    const normalized = value || [];
+
     this.labels.forEach((label: string, index: number) => {
       const checkbox = this.checkboxes.at(index);
-      checkbox.setValue(value.includes(label));
+      checkbox.setValue(normalized.includes(label));
     });
 
-    this.notifyValueUpdated(value);
+    this.notifyValueUpdated(normalized);
   }
 
   public get value(): string[] {

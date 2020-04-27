@@ -91,7 +91,8 @@
     "newline-per-chained-call": false,
     "template-i18n": false,
     "no-void-expression": false,
-    "invalid-void": [true, {"allow-generics": ["Subject"]}]
+    "invalid-void": [true, {"allow-generics": ["Subject"]}],
+    "prefer-function-over-method": false
   },
   "rulesDirectory": [
     "codelyzer"

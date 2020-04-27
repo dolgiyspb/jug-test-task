@@ -50,9 +50,9 @@ export class FiltersComponent implements OnInit, OnDestroy, ControlValueAccessor
   }
 
   public set value(value: Filters) {
-    const normalized = value || defaultFiltersState;
-    this.filterForm.setValue(normalized);
+    this.filterForm.setValue(this.getNormalizedvalue(value));
   }
+
 
   public resetFilters(): void {
     this.filterForm.reset(defaultFiltersState);
@@ -77,5 +77,15 @@ export class FiltersComponent implements OnInit, OnDestroy, ControlValueAccessor
   private notifyValueUpdated(value: Filters): void {
     this.onChange(value);
     this.onTouch(value);
+  }
+
+  private getNormalizedvalue(value: Filters): Filters {
+    const normalized = value || defaultFiltersState;
+
+    return {
+      level: normalized.level || [],
+      language: normalized.language || [],
+      search: normalized.search || '',
+    };
   }
 }
