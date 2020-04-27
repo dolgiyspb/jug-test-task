@@ -31,7 +31,7 @@ export class CheckboxGroupComponent implements OnChanges, ControlValueAccessor {
   }
 
   public set value(value: string[]) {
-    const normalized = value || [];
+    const normalized = value;
 
     this.labels.forEach((label: string, index: number) => {
       const checkbox = this.checkboxes.at(index);

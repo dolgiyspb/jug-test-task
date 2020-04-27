@@ -4,7 +4,7 @@ import { combineLatest, Observable } from 'rxjs';
 import { Presentation } from './interfaces/presentation.interface';
 import { FormControl } from '@angular/forms';
 import { Filters } from './interfaces/filters.interface';
-import { filter, map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
 
 type FilterFunction = (presentation: Presentation) => boolean;
@@ -20,8 +20,8 @@ export class PresentationsComponent implements OnInit {
 
   constructor(
     private readonly presentationsDataService: PresentationsDataService,
-    private router: Router,
-    private activatedRoute: ActivatedRoute,
+    private readonly router: Router,
+    private readonly activatedRoute: ActivatedRoute,
   ) {
   }
 
@@ -31,15 +31,14 @@ export class PresentationsComponent implements OnInit {
 
     this.presentations$ = combineLatest(
       this.presentationsDataService.get$(),
-      this.filtersControl.valueChanges,
+      this.filtersControl.valueChanges.pipe(
+        tap((value: Filters) => this.router.navigate(
+          [],
+          {queryParams: {...value}},
+        )),
+      ),
     ).pipe(
       map(([presentations, filters]: [Presentation[], Filters]) => presentations.filter(this.createFilterFunction(filters))),
-    );
-
-    this.filtersControl.valueChanges.subscribe((value: Filters) => this.router.navigate(
-      [],
-      {queryParams: {...value}},
-      ),
     );
   }
 

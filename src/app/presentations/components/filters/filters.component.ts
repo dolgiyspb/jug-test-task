@@ -29,7 +29,7 @@ export class FiltersComponent implements OnInit, OnDestroy, ControlValueAccessor
 
   public readonly languages: PresentationLanguage[] = Object.values(PresentationLanguage);
   public readonly levels: PresentationLevel[] = Object.values(PresentationLevel);
-  private onDestroy$ = new Subject<void>();
+  private readonly onDestroy$ = new Subject<void>();
 
   private onChange: any = () => {};
   private onTouch: any = () => {};
@@ -79,7 +79,7 @@ export class FiltersComponent implements OnInit, OnDestroy, ControlValueAccessor
     this.onTouch(value);
   }
 
-  private getNormalizedvalue(value: Filters): Filters {
+  private getNormalizedvalue(value?: Partial<Filters>): Filters {
     const normalized = value || defaultFiltersState;
 
     return {

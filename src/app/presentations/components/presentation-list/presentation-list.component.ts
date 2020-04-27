@@ -8,4 +8,8 @@ import { Presentation } from '../../interfaces/presentation.interface';
 })
 export class PresentationListComponent {
   @Input() presentations!: Presentation[];
+
+  public trackByFn({title}: Presentation): string {
+    return title;
+  }
 }

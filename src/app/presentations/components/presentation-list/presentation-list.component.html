@@ -1,2 +1,6 @@
-<app-presentation-item *ngFor="let presentation of presentations" [presentation]="presentation" class="item">
+<app-presentation-item
+  *ngFor="let presentation of presentations; trackBy: trackByFn"
+  [presentation]="presentation"
+  class="item"
+>
 </app-presentation-item>
